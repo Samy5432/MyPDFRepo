@@ -1,0 +1,203 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PDFToolsMasterPage.Master.cs" Inherits="PDFTools.MasterPage.PDFToolsMasterPage" %>
+<%@ Import Namespace="System.Globalization" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="Head1" runat="server">
+        <link href="../StyleSheets/StyleSheetRMT.css" rel="stylesheet" type="text/css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+        <title>Welcome to PDF Merge Tool!</title>
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+        <style type="text/css">
+            .styleUserName {
+                font-family: Arial;
+                font-size: 12px;
+            }
+
+            .style4 { width: 3px; }
+        </style>
+    </head>
+    <body style="background-color: White">
+        <form id="MasterPageForm" runat="server">
+            <table class="TableAlignCenter" width="100%">
+                <tr>
+                    <td height="auto"  >
+                        &nbsp;</td>
+                    <td height="auto"  >
+                        &nbsp;</td>
+                    <td height="auto" class="style2" colspan="2"  >
+                        &nbsp;</td>
+                    <td height="auto" class="style2" colspan="2"  >
+                        &nbsp;</td>
+                    <td  colspan="2" align="right">
+                        <table id="topLinks" class="TableAlignRight">
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx" Text="Home "
+                                                   Font-Names="Arial" Font-Size="12px" />
+                                </td>
+                                <td>
+                                    <asp:HyperLink ID="LinkHelp" runat="server" NavigateUrl="~/Additional/Help.aspx" Text="Help "
+                                                   Font-Names="Arial" Font-Size="12px" />
+                                </td>
+                                <td>
+                                    <asp:HyperLink ID="LinkContactUs" runat="server" NavigateUrl="~/Additional/ContactUs.aspx"
+                                                   Font-Names="Arial" Font-Size="12px" Text="Contact us " />
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </table>                
+                    </td>
+                </tr>
+                <tr class="CellAlignCenter">
+                    <td  class="style4" style="background-color: #99D9EA; color: Black; font-family: Arial;" rowspan="3">
+                       
+                        <img src="../Images/logo.png" height="90" width="90" alt="New Technologies Pvt. Ltd." />
+                    </td>
+                    <td colspan="7"                          
+                        style="background-color: #99D9EA; color: Black; font-family: Arial;" align="center">
+                        <asp:Label ID="lblPageTitle" runat="server" Text="." Font-Bold="True"></asp:Label>
+                        
+                    </td>
+                </tr>
+                <tr class="styleUserName">
+                    <td class="CellAlignLeft" colspan="2">&nbsp;</td>                   
+
+                    <td class="CellAlignLeft">
+                        &nbsp;</td>
+                    <td class="CellAlignLeft">
+                        &nbsp;</td>                   
+                    <td class="CellAlignLeft">
+                    </td>                   
+                    <td class="CellAlignLeft">
+                        &nbsp;</td>                    
+                    <td align="right">
+                        <asp:Label ID="lblDate" runat="server" Text="..."><%= DateTime.Today.ToShortDateString() %></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px" style="background-color: #99D9EA" class="CellAlignCenter" 
+                        colspan="7">
+                        &nbsp;</td>
+                </tr>
+                <tr class="CellAlignCenter">
+                    <!-- Menu -->
+                    <td style="background-color: #99D9EA; vertical-align: top;" >
+                        <table style="background-color: #FFFBD6; width: 100%;" class="tableMenu">
+                            <tr>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td align="right" >
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Menu ID="ConfigureMenu0" runat="server" BackColor="#E3EAEB" DynamicHorizontalOffset="2"
+                                              Font-Names="Verdana" Font-Size="0.8em" ForeColor="#666666" 
+                                              StaticSubMenuIndent="10px" DisappearAfter="20">
+                                        <StaticSelectedStyle BackColor="#1C5E55" />
+                                        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                        <DynamicHoverStyle BackColor="#666666" ForeColor="White" />
+                                        <DynamicMenuStyle CssClass="IE8Fix" BackColor="#E3EAEB" />
+                                        <DynamicSelectedStyle BackColor="#1C5E55" />
+                                        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" 
+                                                              ForeColor="#6600FF" />
+                                        <StaticHoverStyle BackColor="#666666" ForeColor="White" />
+                                        <Items>
+                                            <asp:MenuItem Text="PDF Tools" Value="PDF" 
+                                                          ToolTip="Operations on PDF Files">
+                                                <asp:MenuItem NavigateUrl="~/PDFManager/PDFMerge.aspx" Text="Merge 2 PDF File" ToolTip="Merge 2 PDF File" Value="Merge 2 PDF File">
+                                                </asp:MenuItem>
+                                                <asp:MenuItem NavigateUrl="~/PDFManager/PasswordProtectPDF.aspx" 
+                                                              Text="Password Protect PDF" Value="Password Protect PDF" ToolTip="Set Password to opend PDF">
+                                                </asp:MenuItem>
+                                                <asp:MenuItem NavigateUrl="~/PDFManager/EmbedPDF.aspx" Text="Embed PDF" ToolTip="Embed Child PDF to Parent" Value="Embed PDF"></asp:MenuItem>
+                                                <asp:MenuItem 
+                                                              Text="Convert Image to PDF" ToolTip="Convert Image to PDF" NavigateUrl="~/PDFManager/Img2PDF.aspx"></asp:MenuItem>
+                                            </asp:MenuItem>
+                                        </Items>
+                                    </asp:Menu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Menu ID="Menu1" runat="server" BackColor="#E3EAEB" DynamicHorizontalOffset="2"
+                                              Font-Names="Verdana" Font-Size="0.8em" ForeColor="#666666" 
+                                              StaticSubMenuIndent="10px" DisappearAfter="20">
+                                        <StaticSelectedStyle BackColor="#1C5E55" />
+                                        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                        <DynamicHoverStyle BackColor="#666666" ForeColor="White" />
+                                        <DynamicMenuStyle CssClass="IE8Fix" BackColor="#E3EAEB" />
+                                        <DynamicSelectedStyle BackColor="#1C5E55" />
+                                        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" 
+                                                              ForeColor="#6600FF" />
+                                        <StaticHoverStyle BackColor="#666666" ForeColor="White" />
+
+                                        <Items>
+                                            <asp:MenuItem Text="Excel Tools" Value="Excel Tools">
+                                                <asp:MenuItem Text="Create Exel" Value="Create Exel" NavigateUrl="~/ExcelManager/TableCreation.aspx"></asp:MenuItem>
+                                            </asp:MenuItem>
+                                        </Items>
+                                    </asp:Menu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <!-- Content -->
+                    <td height="auto" class="CellAlignTopLeft" 
+                        style="border-color: Silver; border-style: double;" colspan="7">
+                        <asp:ContentPlaceHolder ID="HTMLRender_ContentPlaceHolder" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px" 
+                        style="background-color: #99D9EA;" class="style4" >
+                        &nbsp;</td>
+
+                    <td height="20px" class="CellAlignCenter" 
+                        style="background-color: #99D9EA; font-family: Arial; font-size: 12px;" 
+                        colspan="7" align="center">
+                        Copyright © <%= DateTime.Today.Year.ToString(CultureInfo.CurrentCulture) + " " %>&nbsp;&nbsp;&nbsp;&nbsp;New Technologies Pvt. Ltd.</td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
